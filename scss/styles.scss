@@ -1,0 +1,71 @@
+
+*, *::before, *::after {
+  //set all element box-sizing to border box so its easier to size elements
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: url("../img/desk_background.jpg") no-repeat;
+  background-size: 100%;
+}
+
+.calculator {
+  
+  border: 5px solid silver;
+  min-height: 100vh;
+  //arrange calculator elements in centered grid layout
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  //Create 4 columns. 100px high
+  grid-template-columns: repeat(4, 100px);
+  //Create 6 rows. First row (the screen) 120px high and width to grow according to input value. Next five rows set as 100px high.
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+
+  &__screen {
+    // make screen span the entire row 
+    grid-column: 1 / -1;
+    background-color: rgb(0, 0, 0);
+    border: 3px solid white;
+    padding: 15px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  &__screen-current {
+    color: white;
+    font-size: 2.5rem;
+  }
+
+  &__screen-previous {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.5rem;
+  }
+
+  &__btn {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 3px solid white;
+    background: rgba(192, 192, 192);
+
+    &:hover {
+      //change button opacity to 60% on hover
+      background: rgb(141, 141, 141);
+    }
+
+    //modifier used to span AC & = button two columns
+    &--span-two {
+      grid-column: span 2;
+    }
+
+  }
+
+}
